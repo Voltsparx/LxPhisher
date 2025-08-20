@@ -1,0 +1,10 @@
+{
+  "version": "3.0",
+  "author": "Voltsparx",
+  "license": "MIT (Educational Use Only)",
+  "default_port": 8080,
+  "default_host": "127.0.0.1",
+  "tunnel_services": ["ngrok", "cloudflared", "localxpose", "localhostrun"],
+  "supported_platforms": ["linux", "macos"],
+  "required_dependencies": ["php", "curl", "wget", "unzip", "jq", "ssh"]
+}

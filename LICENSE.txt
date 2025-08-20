@@ -1,0 +1,136 @@
+MIT LICENSE FOR EDUCATIONAL USE ONLY
+
+Copyright (c) 2025 Voltsparx
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software for EDUCATIONAL AND SECURITY AWARENESS PURPOSES ONLY, subject 
+to the following conditions:
+
+1. EDUCATIONAL USE ONLY: The Software may only be used for legitimate 
+   educational purposes, security awareness training, authorized penetration 
+   testing, and cybersecurity research with proper authorization.
+
+2. NO MALICIOUS USE: The Software shall not be used for any unauthorized, 
+   illegal, or malicious activities including but not limited to:
+   - Unauthorized access to computer systems
+   - Identity theft or fraud
+   - Data theft or exfiltration
+   - Distribution of malware
+   - Any activity that violates local, state, national, or international laws
+
+3. AUTHORIZATION REQUIRED: Users must obtain explicit written permission from 
+   the owner of any system before using the Software against it. Proof of 
+   authorization must be maintained and produced upon request.
+
+4. NO WARRANTY: The Software is provided "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   express or implied, including but not limited to the warranties of 
+   merchantability, fitness for a particular purpose, and noninfringement. 
+   In no event shall the authors or copyright holders be liable for any claim, 
+   damages, or other liability, whether in an action of contract, tort, 
+   or otherwise, arising from, out of, or in connection with the Software 
+   or the use or other dealings in the Software.
+
+5. COMPLIANCE WITH LAWS: User assumes all responsibility for ensuring that 
+   their use of the Software complies with all applicable laws, regulations, 
+   and ethical guidelines in their jurisdiction.
+
+6. RESPONSIBLE DISCLOSURE: Any vulnerabilities discovered using this Software 
+   must be reported responsibly to the affected parties and not exploited 
+   for malicious purposes.
+
+7. DATA HANDLING: Any data collected during authorized use must be handled 
+   responsibly, stored securely, and destroyed after the educational purpose 
+   has been fulfilled.
+
+8. NO COMMERCIAL USE: The Software may not be used for commercial purposes 
+   without explicit written permission from the copyright holder.
+
+9. ATTRIBUTION: When using this Software for educational demonstrations or 
+   presentations, proper attribution must be given to the author.
+
+10. AGE RESTRICTION: Use of this Software is restricted to individuals who 
+    are at least 18 years of age or the age of majority in their jurisdiction.
+
+ADDITIONAL TERMS FOR SPECIFIC JURISDICTIONS:
+
+a. UNITED STATES: Users must comply with the Computer Fraud and Abuse Act 
+   (CFAA), Electronic Communications Privacy Act (ECPA), and other applicable 
+   federal and state laws.
+
+b. EUROPEAN UNION: Users must comply with the General Data Protection 
+   Regulation (GDPR) and Network and Information Systems (NIS) Directive.
+
+c. UNITED KINGDOM: Users must comply with the Computer Misuse Act 1990 and 
+   Data Protection Act 2018.
+
+d. CANADA: Users must comply with the Criminal Code provisions related to 
+   unauthorized computer use and Personal Information Protection and 
+   Electronic Documents Act (PIPEDA).
+
+e. AUSTRALIA: Users must comply with the Privacy Act 1988 and Criminal 
+   Code Act 1995 provisions related to computer offenses.
+
+f. INDIA: Users must comply with the Information Technology Act, 2000 and 
+   related cybersecurity regulations.
+
+DISCLAIMER OF LIABILITY:
+
+The author shall not be held responsible or liable for any misuse of the 
+Software. Users assume full responsibility and liability for their actions 
+when using this Software. By using this Software, you acknowledge that you 
+understand these terms and agree to be bound by them.
+
+The author makes no representations or warranties of any kind concerning the 
+safety, suitability, or legality of the Software. The user is solely 
+responsible for determining the appropriateness of using the Software and 
+assumes all risks associated with its use.
+
+RESTRICTED COUNTRIES:
+
+This Software may not be used by individuals or entities in countries where 
+such use would violate export control laws, economic sanctions, or other 
+legal restrictions including but not limited to: North Korea, Iran, Syria, 
+Crimea Region of Ukraine, Cuba, and any other jurisdiction where the use 
+of this Software would be illegal.
+
+TERMINATION:
+
+Any use of the Software that violates these terms will result in immediate 
+termination of the license granted herein.
+
+GOVERNING LAW:
+
+This license shall be governed by and interpreted in accordance with the 
+laws of the jurisdiction where the copyright holder resides, without regard 
+to its conflict of law provisions.
+
+SEVERABILITY:
+
+If any provision of this license is held to be unenforceable or invalid, 
+such provision shall be modified to the extent necessary to make it 
+enforceable, and all other provisions shall remain in full force and effect.
+
+ENTIRE AGREEMENT:
+
+This license constitutes the entire agreement between the parties and 
+supersedes all prior understandings, agreements, or representations.
+
+ACCEPTANCE:
+
+By using this Software, you indicate that you have read this license, 
+understand it, and agree to be bound by its terms and conditions. If you 
+do not agree to these terms, you must immediately cease using and destroy 
+all copies of the Software.
+
+CONTACT INFORMATION:
+
+For questions about this license or to report unauthorized use, contact:
+voltsparx@gmail.com
+
+EFFECTIVE DATE: August 21, 2025
+
+LAST UPDATED: August 21, 2025
+
+This is a legally binding agreement. Use of the Software constitutes 
+acceptance of these terms.

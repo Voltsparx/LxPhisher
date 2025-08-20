@@ -1,0 +1,39 @@
+# LxPhisher .gitignore
+
+# Runtime data
+servers/*
+captured_data/*
+auth/*
+!.gitkeep
+
+# Tunnel binaries (should be downloaded by installer)
+.tunnels/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+
+# Backup files
+*.bak
+*.backup
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+._*
+
+# Keep empty directories
+!.gitkeep

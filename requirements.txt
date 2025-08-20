@@ -1,0 +1,14 @@
+# LxPhisher Requirements
+# These will be automatically installed by install_lxphisher.sh
+
+php>=7.4
+curl
+wget
+unzip
+jq
+openssh-client
+
+# Optional tunnel services (will be downloaded automatically)
+# ngrok
+# cloudflared  
+# localxpose

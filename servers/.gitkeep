@@ -1,0 +1,5 @@
+# Create .gitkeep files in empty directories
+touch servers/.gitkeep
+touch captured_data/.gitkeep
+touch auth/.gitkeep
+touch .tunnels/.gitkeep

